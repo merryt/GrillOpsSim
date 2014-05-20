@@ -41,7 +41,7 @@ angular.module('ngScaffold.config', [
     .constant('NAV_ITEMS', [
         {title: 'Home', state: 'home', sref: 'home', icon: 'glyphicon-home'},
         {title: 'Individual High Scores', state: 'individualHighScores', sref: 'individualHighScores', icon: 'glyphicon-list-alt'},
-        {title: 'Team High Scores', state: 'contact', sref: 'contact', icon: 'glyphicon-stats'},
+        {title: 'Team High Scores', state: 'teamHighScores', sref: 'teamHighScores', icon: 'glyphicon-stats'},
         {title: 'My account', state: 'user', sref: 'user.dashboard', icon: 'glyphicon-user'}
     ])
 
@@ -60,13 +60,13 @@ angular.module('ngScaffold.config', [
                 url: '/individualHighScores',
                 templateUrl: 'app/view/individualHighScores.tpl.html'
             })
-            .state('contact', {
-                url: '/contact',
-                templateUrl: 'app/view/contact.tpl.html'
+            .state('teamHighScores', {
+                url: '/teamHighScores',
+                templateUrl: 'app/view/teamHighScores.tpl.html'
             });
     });
 
-angular.module('template.app', ['app/module/user/view/user-dashboard.tpl.html', 'app/module/user/view/user-profile.tpl.html', 'app/module/user/view/user-settings.tpl.html', 'app/module/user/view/user.tpl.html', 'app/view/contact.tpl.html', 'app/view/footer.tpl.html', 'app/view/header.tpl.html', 'app/view/home.tpl.html', 'app/view/individualHighScores.tpl.html']);
+angular.module('template.app', ['app/module/user/view/user-dashboard.tpl.html', 'app/module/user/view/user-profile.tpl.html', 'app/module/user/view/user-settings.tpl.html', 'app/module/user/view/user.tpl.html', 'app/view/footer.tpl.html', 'app/view/header.tpl.html', 'app/view/home.tpl.html', 'app/view/individualHighScores.tpl.html', 'app/view/teamHighScores.tpl.html']);
 
 angular.module('app/module/user/view/user-dashboard.tpl.html', []).run(['$templateCache', function($templateCache) {
     'use strict';
@@ -92,12 +92,6 @@ angular.module('app/module/user/view/user.tpl.html', []).run(['$templateCache', 
         '<div class=page-header><h1>{{heading}}</h1></div><ul class="nav nav-tabs"><li ui-sref-active=active ng-repeat="module in userModules"><a ui-sref={{module.sref}}>{{module.title}}</a></li></ul><div id=user-modules ui-view=""></div>');
 }]);
 
-angular.module('app/view/contact.tpl.html', []).run(['$templateCache', function($templateCache) {
-    'use strict';
-    $templateCache.put('app/view/contact.tpl.html',
-        '<div class=page-header><h1>Contact us!</h1></div><address>...</address>');
-}]);
-
 angular.module('app/view/footer.tpl.html', []).run(['$templateCache', function($templateCache) {
     'use strict';
     $templateCache.put('app/view/footer.tpl.html',
@@ -120,6 +114,12 @@ angular.module('app/view/individualHighScores.tpl.html', []).run(['$templateCach
     'use strict';
     $templateCache.put('app/view/individualHighScores.tpl.html',
         '<div class=page-header><h1>Individual High Scores!</h1></div><div class=highScore><p class=pull-left>name</p><p class=pull-right>score</p></div><p>...</p>');
+}]);
+
+angular.module('app/view/teamHighScores.tpl.html', []).run(['$templateCache', function($templateCache) {
+    'use strict';
+    $templateCache.put('app/view/teamHighScores.tpl.html',
+        '<div class=page-header><h1>Team High Scores!</h1></div><address>...</address>');
 }]);
 
 /**

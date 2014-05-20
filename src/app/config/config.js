@@ -13,7 +13,7 @@ angular.module('ngScaffold.config', [
     .constant('NAV_ITEMS', [
         {title: 'Home', state: 'home', sref: 'home', icon: 'glyphicon-home'},
         {title: 'Individual High Scores', state: 'individualHighScores', sref: 'individualHighScores', icon: 'glyphicon-list-alt'},
-        {title: 'Team High Scores', state: 'contact', sref: 'contact', icon: 'glyphicon-stats'},
+        {title: 'Team High Scores', state: 'teamHighScores', sref: 'teamHighScores', icon: 'glyphicon-stats'},
         {title: 'My account', state: 'user', sref: 'user.dashboard', icon: 'glyphicon-user'}
     ])
 
@@ -32,8 +32,8 @@ angular.module('ngScaffold.config', [
                 url: '/individualHighScores',
                 templateUrl: 'app/view/individualHighScores.tpl.html'
             })
-            .state('contact', {
-                url: '/contact',
-                templateUrl: 'app/view/contact.tpl.html'
+            .state('teamHighScores', {
+                url: '/teamHighScores',
+                templateUrl: 'app/view/teamHighScores.tpl.html'
             });
     });
