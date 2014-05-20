@@ -12,8 +12,8 @@ angular.module('ngScaffold.config', [
 
     .constant('NAV_ITEMS', [
         {title: 'Home', state: 'home', sref: 'home', icon: 'glyphicon-home'},
-        {title: 'About', state: 'about', sref: 'about', icon: 'glyphicon-info-sign'},
-        {title: 'Contact', state: 'contact', sref: 'contact', icon: 'glyphicon-earphone'},
+        {title: 'Individual High Scores', state: 'individualHighScores', sref: 'individualHighScores', icon: 'glyphicon-list-alt'},
+        {title: 'Team High Scores', state: 'contact', sref: 'contact', icon: 'glyphicon-stats'},
         {title: 'My account', state: 'user', sref: 'user.dashboard', icon: 'glyphicon-user'}
     ])
 
@@ -28,9 +28,9 @@ angular.module('ngScaffold.config', [
                 templateUrl: 'app/view/home.tpl.html',
                 controller: 'HomeCtrl'
             })
-            .state('about', {
-                url: '/about',
-                templateUrl: 'app/view/about.tpl.html'
+            .state('individualHighScores', {
+                url: '/individualHighScores',
+                templateUrl: 'app/view/individualHighScores.tpl.html'
             })
             .state('contact', {
                 url: '/contact',

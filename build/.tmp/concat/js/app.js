@@ -40,8 +40,8 @@ angular.module('ngScaffold.config', [
 
     .constant('NAV_ITEMS', [
         {title: 'Home', state: 'home', sref: 'home', icon: 'glyphicon-home'},
-        {title: 'About', state: 'about', sref: 'about', icon: 'glyphicon-info-sign'},
-        {title: 'Contact', state: 'contact', sref: 'contact', icon: 'glyphicon-earphone'},
+        {title: 'Individual High Scores', state: 'individualHighScores', sref: 'individualHighScores', icon: 'glyphicon-list-alt'},
+        {title: 'Team High Scores', state: 'contact', sref: 'contact', icon: 'glyphicon-stats'},
         {title: 'My account', state: 'user', sref: 'user.dashboard', icon: 'glyphicon-user'}
     ])
 
@@ -56,9 +56,9 @@ angular.module('ngScaffold.config', [
                 templateUrl: 'app/view/home.tpl.html',
                 controller: 'HomeCtrl'
             })
-            .state('about', {
-                url: '/about',
-                templateUrl: 'app/view/about.tpl.html'
+            .state('individualHighScores', {
+                url: '/individualHighScores',
+                templateUrl: 'app/view/individualHighScores.tpl.html'
             })
             .state('contact', {
                 url: '/contact',
@@ -66,7 +66,7 @@ angular.module('ngScaffold.config', [
             });
     });
 
-angular.module('template.app', ['app/module/user/view/user-dashboard.tpl.html', 'app/module/user/view/user-profile.tpl.html', 'app/module/user/view/user-settings.tpl.html', 'app/module/user/view/user.tpl.html', 'app/view/about.tpl.html', 'app/view/contact.tpl.html', 'app/view/footer.tpl.html', 'app/view/header.tpl.html', 'app/view/home.tpl.html']);
+angular.module('template.app', ['app/module/user/view/user-dashboard.tpl.html', 'app/module/user/view/user-profile.tpl.html', 'app/module/user/view/user-settings.tpl.html', 'app/module/user/view/user.tpl.html', 'app/view/contact.tpl.html', 'app/view/footer.tpl.html', 'app/view/header.tpl.html', 'app/view/home.tpl.html', 'app/view/individualHighScores.tpl.html']);
 
 angular.module('app/module/user/view/user-dashboard.tpl.html', []).run(['$templateCache', function($templateCache) {
     'use strict';
@@ -92,12 +92,6 @@ angular.module('app/module/user/view/user.tpl.html', []).run(['$templateCache', 
         '<div class=page-header><h1>{{heading}}</h1></div><ul class="nav nav-tabs"><li ui-sref-active=active ng-repeat="module in userModules"><a ui-sref={{module.sref}}>{{module.title}}</a></li></ul><div id=user-modules ui-view=""></div>');
 }]);
 
-angular.module('app/view/about.tpl.html', []).run(['$templateCache', function($templateCache) {
-    'use strict';
-    $templateCache.put('app/view/about.tpl.html',
-        '<div class=page-header><h1>About us!</h1></div><p>...</p>');
-}]);
-
 angular.module('app/view/contact.tpl.html', []).run(['$templateCache', function($templateCache) {
     'use strict';
     $templateCache.put('app/view/contact.tpl.html',
@@ -113,13 +107,19 @@ angular.module('app/view/footer.tpl.html', []).run(['$templateCache', function($
 angular.module('app/view/header.tpl.html', []).run(['$templateCache', function($templateCache) {
     'use strict';
     $templateCache.put('app/view/header.tpl.html',
-        '<div ng-controller=NavigationCtrl class="navbar navbar-inverse navbar-fixed-top"><div class=container><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse><span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand ui-sref=home>ng-scaffold</a></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav"><li ng-class="{active: $state.includes(\'{{item.state}}\')}" ng-repeat="item in navItems"><a ui-sref={{item.sref}}><span ng-show=item.icon class="glyphicon {{item.icon}}"></span> {{item.title}}</a></li></ul></div></div></div>');
+        '<div ng-controller=NavigationCtrl class="navbar navbar-inverse navbar-fixed-top"><div class=container><div class=navbar-header><button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-collapse><span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand ui-sref=home>Grill Ops Simulator</a></div><div class="navbar-collapse collapse"><ul class="nav navbar-nav"><li ng-class="{active: $state.includes(\'{{item.state}}\')}" ng-repeat="item in navItems"><a ui-sref={{item.sref}}><span ng-show=item.icon class="glyphicon {{item.icon}}"></span> {{item.title}}</a></li></ul></div></div></div>');
 }]);
 
 angular.module('app/view/home.tpl.html', []).run(['$templateCache', function($templateCache) {
     'use strict';
     $templateCache.put('app/view/home.tpl.html',
         '<div class=jumbotron ng-controller=HomeCtrl><h1>{{heading}}</h1><p>1 + 2 = {{ 1 + 2 }}</p><p>{{text}}</p><p><a class="btn btn-lg btn-primary" href=#about>Learn more <span class="glyphicon glyphicon-chevron-right"></span></a></p></div>');
+}]);
+
+angular.module('app/view/individualHighScores.tpl.html', []).run(['$templateCache', function($templateCache) {
+    'use strict';
+    $templateCache.put('app/view/individualHighScores.tpl.html',
+        '<div class=page-header><h1>Individual High Scores!</h1></div><div class=highScore><p class=pull-left>name</p><p class=pull-right>score</p></div><p>...</p>');
 }]);
 
 /**
